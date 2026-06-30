@@ -1,0 +1,175 @@
+{
+  "info": {
+    "_postman_id": "c1f738ba-9944-4f01-a0c5-349071c6c5fd",
+    "name": "Task Management System REST APIs",
+    "description": "Full Postman collection for testing the Task Management CRUD REST endpoints. Supports searching, filtering, pagination, sorting, and validation.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Tasks",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/tasks?search=&status=&priority=&sortBy=createdAt&sortOrder=desc&page=1&limit=10",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "tasks"
+          ],
+          "query": [
+            { "key": "search", "value": "" },
+            { "key": "status", "value": "" },
+            { "key": "priority", "value": "" },
+            { "key": "sortBy", "value": "createdAt" },
+            { "key": "sortOrder", "value": "desc" },
+            { "key": "page", "value": "1" },
+            { "key": "limit", "value": "10" }
+          ]
+        },
+        "description": "Get all tasks with optional search, status filtering, priority filtering, sorting, and pagination options."
+      },
+      "response": []
+    },
+    {
+      "name": "Get Task By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/tasks/task_1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "tasks",
+            "task_1"
+          ]
+        },
+        "description": "Fetches details of a single task by its unique ID."
+      },
+      "response": []
+    },
+    {
+      "name": "Create Task (Valid)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Implement Express Middleware\",\n  \"description\": \"Integrate Helmet, CORS, and Morgan logs inside the server gateway.\",\n  \"status\": \"Pending\",\n  \"priority\": \"High\",\n  \"dueDate\": \"2026-07-02T12:00:00.000Z\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/tasks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "tasks"
+          ]
+        },
+        "description": "Submits a new task to the database. Validates input schema before saving."
+      },
+      "response": []
+    },
+    {
+      "name": "Create Task (Invalid - Schema Failure)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"description\": \"This is invalid because title is omitted and status value is unsupported.\",\n  \"status\": \"Urgent\",\n  \"priority\": \"Low\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/tasks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "tasks"
+          ]
+        },
+        "description": "Demonstrates strict validation catching omissions and wrong enum values, returning HTTP 400 Bad Request."
+      },
+      "response": []
+    },
+    {
+      "name": "Update Task By ID",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Implement Express Middleware (Updated Title)\",\n  \"status\": \"In Progress\",\n  \"priority\": \"High\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/tasks/task_1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "tasks",
+            "task_1"
+          ]
+        },
+        "description": "Partially or fully updates task properties. Undefined fields will remain untouched."
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Task By ID",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/tasks/task_1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "tasks",
+            "task_1"
+          ]
+        },
+        "description": "Deletes a task permanently from the database. Returns the deleted ID."
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# Node modules
+node_modules/
+
+# Local databases / file fallback persistence
+tasks.json
+
+# Environment variables containing secrets
+.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db

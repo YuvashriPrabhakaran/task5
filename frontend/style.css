@@ -1,0 +1,85 @@
+/* 
+  Task Management System - Style Sheet
+  --------------------------------------------------
+  This stylesheet supplements the utility classes from Tailwind CSS.
+  It provides custom animations, layout helpers, and scrollbar styles.
+*/
+
+/* Custom scrollbar styling for Console outputs and dialog boxes */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #0f172a; /* slate-900 */
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #334155; /* slate-700 */
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #475569; /* slate-600 */
+}
+
+/* Animations for slide-over modals */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Modal Open classes */
+.modal-overlay-open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.modal-content-open {
+  transform: translateX(0) !important;
+}
+
+/* Status & Priority Badge Glow Animations */
+.priority-high-glow {
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+}
+
+.priority-medium-glow {
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+}
+
+.priority-low-glow {
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}

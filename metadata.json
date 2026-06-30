@@ -1,0 +1,6 @@
+{
+  "name": "Task Management System",
+  "description": "A complete RESTful API Design & Integration project for a Task Management System, featuring a clean Express.js backend, MongoDB integration, a modern React dashboard, and a fully structured standalone folder system for internship submission.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
